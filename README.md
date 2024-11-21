@@ -17,19 +17,21 @@ To write a program to predict the profit of a city using the linear regression m
 /*
 Program to implement the linear regression using gradient descent.
 Developed by: Elaiyavan K
-RegisterNumber:  24900184
+RegisterNumber: 24900184
+
+
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 def linear_regression(X1,y, learning_rate=0.01, num_iters=1000):
-   X=np.c_[np.ones(len(X1)),X1]
-   theta=np.zeros(X.shape[1]).reshape(-1,1)
-   for _ in range(num_iters):
-     predictions=(X).dot(theta).reshape(-1,1)
-     errors=(predictions-y).reshape(-1,1)
-     theta -= learning_rate*(1/len(X1))*X.T.dot(errors)
-   return theta
-data=pd.read_csv('50_Startups1.csv' , header=None)
+    X=np.c_[np.ones(len(X1)),X1]
+    theta=np.zeros(X.shape[1]).reshape(-1,1)
+    for _ in range(num_iters):
+        predictions=(X).dot(theta).reshape(-1,1)
+        errors=(predictions-y).reshape(-1,1)
+        theta -= learning_rate*(1/len(X1))*X.T.dot(errors)
+    return theta
+data=pd.read_csv('50_Startups.csv' , header=None)
 X=(data.iloc[1 :, :- 2].values)
 X1=X.astype(float)
 scaler=StandardScaler()
@@ -43,12 +45,13 @@ prediction=np.dot(np.append(1, new_Scaled), theta)
 prediction=prediction.reshape(-1,1)
 pre=scaler.inverse_transform(prediction)
 print(f"Predicted value: {pre}")
+data.head()
 */
 ```
 
 ## Output:
-![Screenshot 2024-11-15 093728](https://github.com/user-attachments/assets/72985f14-e179-46f0-ad20-341a8146ccab)
 
+![Screenshot 2024-11-21 091330](https://github.com/user-attachments/assets/060f1a89-c079-43a5-9c33-a02f2635dea9)
 
 
 ## Result:
